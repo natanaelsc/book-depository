@@ -1,20 +1,19 @@
 {
-  "name": "desafio-agenciabegin-backend",
+  "name": "book-depository",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/lucas6g/desafio-agenciabegin-backend",
-  "author": "lucas6g <lucas.trabalho1533@gmail.com>",
+  "repository": "https://github.com/natanaelsc/book-depository",
+  "author": "natanaelsc <me@natanaelsc.dev>",
   "license": "MIT",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
+    "start:dev": "ts-node-dev --cls --ignore-watch node_modules src/server.ts",
+    "build": "tsc && prisma generate",
     "prepare": "husky install",
     "maildev": "maildev -s 1024 -w 1081",
-    "db": "prisma generate && prisma migrate dev && prisma studio --browser none --port 7777",
-    "postinstall": "tsc",
-    "watch-ts": "tsc --watch",
-    "deploy": "git add . && git commit -m \"ci: heroku deploy\" && git push heroku main && heroku open && heroku logs --tail",
-    "build": "prisma generate"
+    "deploy:heroku": "git add . && git commit -m \"ci: heroku deploy\" && git push heroku main && heroku open && heroku logs --tail",
+    "prisma:dev": "prisma generate && prisma migrate dev",
+    "prisma:studio": "prisma studio --browser none --port 5002"
   },
   "dependencies": {
     "@prisma/client": "^3.14.0",
@@ -53,7 +52,7 @@
     "lint-staged": "^12.4.1",
     "maildev": "^2.0.5",
     "prettier": "^2.6.2",
-    "ts-node-dev": "^1.1.8",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^4.6.4"
   },
   "prisma": {
